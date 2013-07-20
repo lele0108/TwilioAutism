@@ -1,0 +1,44 @@
+.steve {
+	padding-top:50px;
+}
+
+.steve h1 {
+	background-color:gray;
+	color:white;
+	padding:50px 20px 50px 20px;
+	border-radius:8px;
+}
+
+.result {
+	margin-top:30px;
+	margin-bottom:20px;
+	background-color:gray;
+	padding: 25px 15px 25px 15px;
+	color:white;
+	border-radius:8px;
+}
+
+.result p {
+	background-color:green;
+	padding:10px;
+}
+
+.question {
+	padding-bottom:3px;
+}
+
+.answer h1 {
+	font-size:24px;
+}
+
+.box {
+	background-color:white;
+	color:black;
+	padding: 15px 5px 15px 20px;
+}
+
+.box h2 {
+	font-size:20px;
+	font-weight:400;
+	line-height:25px;
+}
