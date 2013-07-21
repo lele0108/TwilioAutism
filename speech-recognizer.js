@@ -2,6 +2,7 @@
 
     $(document).ready(function() {
         $('#coffee').toggle();
+        $('#weather').toggle();
         $('#lost').toggle();
         $('#girl').toggle();
         $('#spill').toggle();
@@ -48,7 +49,7 @@
                     console.log(event.results[i][0].transcript);
 
                     //CHECKS HERE
-                    if (event.results[i][0].transcript === "could you call my mom") {
+                    if (event.results[i][0].transcript === "could you call my mom" || event.results[i][0].transcript === "can you call my mom") {
                         //speak("Sure, I'm currently calling your mom for you");
                         $('#mom').addClass('animated fadeInDown');
                         $('#mom').toggle().fadeIn("slow");
@@ -56,6 +57,16 @@
                         var url = "http://tts-api.com/tts.mp3?q="+query;
                         playSound(url);
                         Twilio.Device.connect();
+                        $('#coffee').toggle();
+                        $('#weather').toggle();
+                        $('#lost').toggle();
+                        $('#girl').toggle();
+                        $('#spill').toggle();
+                        $('#hurt').toggle();
+                        $('#lonely').toggle();
+                        $('#bored').toggle();
+                        $('#mom').toggle();
+                        $('#hi').toggle();
                     }
 
                     else if (event.results[i][0].transcript === "I want to buy some coffee") {
@@ -112,7 +123,7 @@
                     else if (event.results[i][0].transcript === "hello") {
                         $('#hi').addClass('animated fadeInDown');
                         $('#hi').toggle();
-                        var query = "Hello, how are you? I feel meowtastic!";
+                        var query = "Hello, how are you? I feel fantastic!";
                         var url = "http://tts-api.com/tts.mp3?q="+query;
                         playSound(url);
                     }
@@ -124,6 +135,14 @@
                         var url = "http://tts-api.com/tts.mp3?q="+query;
                         playSound(url);
                         Twilio.Device.connect();
+                    }
+
+                    else if (event.results[i][0].transcript === "what should I wear today") {
+                        $('#weather').addClass('animated fadeInDown');
+                        $('#weather').toggle().fadeIn("slow");
+                        var query = "The weather looks a bit cold today. Try wearing these outfits. T-shirt. Long Jeans. Light Jacket";
+                        var url = "http://tts-api.com/tts.mp3?q="+query;
+                        playSound(url);
                     }
 
                     else {

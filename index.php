@@ -219,6 +219,27 @@
             </div>
           </div>
 
+          <div class="span6 offset3" id="weather">
+            <div class="result">
+
+
+              
+              <div class="answer">
+                <h1>The weather looks a bit cold today. Try wearing these outfits.</h1>
+                <div class="box">
+                  <h2>Tshirt</h2>
+                  <h2>Long Jeans</h2>
+                  <h2>Light Jacket</h2><br>
+                    <img src="img/tshirt.png" width="70">
+                    <img src="img/jeans.png" width="70">
+                    <img src="img/jacket.png" width="70">
+                </div>
+                <h1></h1>
+              </div>
+
+            </div>
+          </div>
+
           <div class="span6 offset3" id="girl">
             <div class="result">
 
