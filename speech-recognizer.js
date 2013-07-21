@@ -44,7 +44,7 @@
                 if (event.results[i].isFinal) {
                     //insertAtCaret(textAreaID, event.results[i][0].transcript);
 
-                    $('.inner').replaceWith('<div class="inner">' + event.results[i][0].transcript + '</div>');
+                    $('.inner').replaceWith('<div class="inner">"' + event.results[i][0].transcript + '"</div>');
                     console.log(event.results[i][0].transcript);
 
                     //CHECKS HERE
