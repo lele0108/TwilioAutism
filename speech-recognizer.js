@@ -11,6 +11,7 @@
         $('#bored').toggle();
         $('#mom').toggle();
         $('#hi').toggle();
+
         try {
             var recognition = new webkitSpeechRecognition();
         } catch(e) {
@@ -37,6 +38,15 @@
         };
 
         recognition.onresult = function (event) {
+            $('#coffee').hide();
+            $('#mom').hide();
+            $('#weather').hide();
+            $('#lost').hide();
+            $('#girl').hide();
+            $('#spill').hide();
+            $('#hurt').hide();
+            $('#lonely').hide();
+            $('#bored').hide();
             //var pos = textArea.getCursorPosition() - interimResult.length;
             //textArea.val(textArea.val().replace(interimResult, ''));
             interimResult = '';
@@ -57,16 +67,7 @@
                         var url = "http://tts-api.com/tts.mp3?q="+query;
                         playSound(url);
                         Twilio.Device.connect();
-                        $('#coffee').toggle();
-                        $('#weather').toggle();
-                        $('#lost').toggle();
-                        $('#girl').toggle();
-                        $('#spill').toggle();
-                        $('#hurt').toggle();
-                        $('#lonely').toggle();
-                        $('#bored').toggle();
-                        $('#mom').toggle();
-                        $('#hi').toggle();
+
                     }
 
                     else if (event.results[i][0].transcript === "I want to buy some coffee") {
@@ -76,6 +77,7 @@
                         var query = "Here, try this: 1. Go up to cashier 2. Tell her what you want 3. Pay her what she tells you to 4. Get your delicious coffee! Do you want me to say it for you?";
                         var url = "http://tts-api.com/tts.mp3?q="+query;
                         playSound(url);
+                        
                     }
 
                     else if (event.results[i][0].transcript === "I'm lost") {
@@ -85,12 +87,14 @@
                         var query = "Here are directions home from your location. Do you want me to ask your mom for help?";
                         var url = "http://tts-api.com/tts.mp3?q="+query;
                         playSound(url);
+
                     }
 
                     else if (event.results[i][0].transcript === "i see a beautiful girl") {
                         console.log("hi");
                         $('#girl').addClass('animated fadeInDown');
                         $('#girl').toggle();
+                    
                     }
 
                     else if (event.results[i][0].transcript === "I spilled something") {
@@ -100,6 +104,7 @@
                         var query = "Here, try cleaning it up with the towels. Ask some adults near you for help. Do you want to ask your mom for help?";
                         var url = "http://tts-api.com/tts.mp3?q="+query;
                         playSound(url);
+                        
                     }
 
                     else if (event.results[i][0].transcript === "I'm bleeding") {
@@ -109,6 +114,7 @@
                         var query = "Here, don't worry. Try washing up with water in the restroom. After that you can put on a bandaid. Do you want to ask your mom for help?";
                         var url = "http://tts-api.com/tts.mp3?q="+query;
                         playSound(url);
+                        
                     }
 
                     else if (event.results[i][0].transcript === "I'm bored") {
@@ -118,6 +124,7 @@
                         var query = "Here, lets draw a picture and send it to your mom";
                         var url = "http://tts-api.com/tts.mp3?q="+query;
                         playSound(url);
+                        
                     }
 
                     else if (event.results[i][0].transcript === "hello") {
@@ -126,6 +133,8 @@
                         var query = "Hello, how are you? I feel fantastic!";
                         var url = "http://tts-api.com/tts.mp3?q="+query;
                         playSound(url);
+                        
+                        
                     }
 
                     else if (event.results[i][0].transcript === "yes") {
@@ -135,6 +144,7 @@
                         var url = "http://tts-api.com/tts.mp3?q="+query;
                         playSound(url);
                         Twilio.Device.connect();
+                        
                     }
 
                     else if (event.results[i][0].transcript === "what should I wear today") {
@@ -143,6 +153,7 @@
                         var query = "The weather looks a bit cold today. Try wearing these outfits. T-shirt. Long Jeans. Light Jacket";
                         var url = "http://tts-api.com/tts.mp3?q="+query;
                         playSound(url);
+                       
                     }
 
                     else {
