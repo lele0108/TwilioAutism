@@ -1,13 +1,66 @@
+<?php
+// @start snippet
+include 'Services/Twilio/Capability.php';
+
+$accountSid = 'AC387108592c0562176801dfecc07b3551';
+$authToken  = 'c1f80aab9cc6f128c379fedff230b700';
+
+$capability = new Services_Twilio_Capability($accountSid, $authToken);
+$capability->allowClientOutgoing('AP7a72e3a80514ac5aea5309ea32b4889f');
+// @end snippet
+?>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bootstrap 101 Template</title>
+    <title>Hackathon</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
+    <script type="text/javascript" src="//static.twilio.com/libs/twiliojs/1.1/twilio.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+
+      Twilio.Device.setup("<?php echo $capability->generateToken();?>");
+
+      $("#call").click(function() {
+        Twilio.Device.connect();
+      });
+      $("#hangup").click(function() {
+        Twilio.Device.disconnectAll();
+      });
+
+      Twilio.Device.ready(function (device) {
+        $('#status').text('Ready to start call');
+      });
+
+      Twilio.Device.offline(function (device) {
+        $('#status').text('Offline');
+      });
+
+      Twilio.Device.error(function (error) {
+        $('#status').text(error);
+      });
+
+      Twilio.Device.connect(function (conn) {
+        $('#status').text("Successfully established call");
+        toggleCallStatus();
+      });
+
+      Twilio.Device.disconnect(function (conn) {
+        $('#status').text("Call ended");
+        toggleCallStatus();
+      });
+
+      function toggleCallStatus(){
+        $('#call').toggle();
+        $('#hangup').toggle();
+      }
+
+    });
+    </script>
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
     <link href="css/style.css" rel="stylesheet" media="screen">
-    <link href="style1.css" rel="stylesheet" media="screen">
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="textarea-helper.js"></script>
@@ -15,6 +68,14 @@
   </head>
   <body>
 
+<div align="center">
+      <input type="button" id="hangup" value="Disconnect Call" style="display:none;"/>
+      <div id="status">
+        Offline
+      </div>
+
+
+    
     <div class="steve">
       <div class="row">
         <div class="container">
