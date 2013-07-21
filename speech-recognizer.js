@@ -5,6 +5,10 @@
         $('#coffee').toggle();
         $('#lost').toggle();
         $('#girl').toggle();
+        $('#spill').toggle();
+        $('#hurt').toggle();
+        $('#lonely').toggle();
+        $('#bored').toggle();
         try {
             var recognition = new webkitSpeechRecognition();
         } catch(e) {
@@ -67,6 +71,24 @@
                         console.log("hi");
                         $('#girl').addClass('animated fadeInDown');
                         $('#girl').toggle();
+                    }
+
+                    else if (event.results[i][0].transcript === "I spilled something") {
+                        speak("Here, try cleaning it up with the towels. Ask some adults near you for help. Do you want to ask your mom for help?");
+                        $('#spill').addClass('animated fadeInDown');
+                        $('#spill').toggle();
+                    }
+
+                    else if (event.results[i][0].transcript === "I'm bleeding") {
+                        speak("Here, don't worry. Try washing up with water in the restroom. After that you can put on a bandaid. Do you want to ask your mom for help?");
+                        $('#hurt').addClass('animated fadeInDown');
+                        $('#hurt').toggle();
+                    }
+
+                    else if (event.results[i][0].transcript === "I'm bored") {
+                        speak("Here, lets draw a picture and send it to your mom");
+                        $('#bored').addClass('animated fadeInDown');
+                        $('#bored').toggle();
                     }
 
                     else {
