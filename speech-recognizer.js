@@ -20,11 +20,11 @@
 
         $('.speech-mic-works').click(function(){
             recognition.stop();
+            console.log("penis");
         });
 
         var startRecognition = function() {
             $('.speech-content-mic').removeClass('speech-mic').addClass('speech-mic-works');
-            //textArea.focus();
             recognition.start();
         };
 
@@ -41,6 +41,7 @@
                         console.log("hi");
                         $('.result').toggle();
                     }
+                    recognition.stop();
                 } else {
                     isFinished = false;
                     //insertAtCaret(textAreaID, event.results[i][0].transcript + '\u200B');
@@ -51,6 +52,7 @@
 
         recognition.onend = function() {
             $('.speech-content-mic').removeClass('speech-mic-works').addClass('speech-mic');
+            $('.inner').replaceWith('<div class="inner"></div>');
         };
     });
 })(jQuery);
