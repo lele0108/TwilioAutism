@@ -1,9 +1,10 @@
 (function($) {
 
     $(document).ready(function() {
-
         $('#mom').toggle();
-        $('.result').toggle();
+        $('#coffee').toggle();
+        $('#lost').toggle();
+        $('#girl').toggle();
         try {
             var recognition = new webkitSpeechRecognition();
         } catch(e) {
@@ -40,11 +41,30 @@
                     //insertAtCaret(textAreaID, event.results[i][0].transcript);
                     $('.inner').append(event.results[i][0].transcript);
                     console.log(event.results[i][0].transcript);
+
+                    //CHECKS HERE
                     if (event.results[i][0].transcript === "could you call my mom") {
+                        speak("Sure, I'm currently calling your mom for you");
                         console.log("hi");
                         $('#mom').toggle();
                         Twilio.Device.connect();
                     }
+
+                    else if (event.results[i][0].transcript === "I want to buy some coffee") {
+                        console.log("hi");
+                        $('#coffee').toggle();
+                    }
+
+                    else if (event.results[i][0].transcript === "I'm lost") {
+                        console.log("hi");
+                        $('#lost').toggle();
+                    }
+
+                    else if (event.results[i][0].transcript === "i see a beautiful girl") {
+                        console.log("hi");
+                        $('#girl').toggle();
+                    }
+
                     recognition.stop();
                 } else {
                     isFinished = false;

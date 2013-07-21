@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <script type="text/javascript" src="//static.twilio.com/libs/twiliojs/1.1/twilio.min.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
 
@@ -61,13 +61,13 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
     <link href="css/style.css" rel="stylesheet" media="screen">
-    <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="textarea-helper.js"></script>
     <script type="text/javascript" src="speech-recognizer.js"></script>
+    <script src="speakClient.js"></script>
   </head>
   <body>
-    
+    <div id="audio"></div>
     <div class="steve">
       <div class="row">
         <div class="container">
@@ -96,7 +96,7 @@
           <div class="span6 offset3">
             <div class="inner"></div>
               <div id="mom">
-                <div class="result1">
+                <div class="result">
 
 
                   <div class="question"><p style="">Could you call my mom for me?</p></div>
@@ -114,7 +114,7 @@
               </div>
             </div>
 
-          <div class="span6 offset3">
+          <div class="span6 offset3" id="coffee">
             <div class="result">
 
 
@@ -133,7 +133,7 @@
             </div>
           </div>
 
-          <div class="span6 offset3">
+          <div class="span6 offset3" id="lost">
             <div class="result">
 
 
@@ -149,7 +149,7 @@
             </div>
           </div>
 
-          <div class="span6 offset3">
+          <div class="span6 offset3" id="girl">
             <div class="result">
 
               <div class="question"><p style="">Meow, I just saw a beautiful girl on the street, but I don't know what to say :(</p></div>

@@ -1,136 +1,136 @@
-[![Build Status](https://secure.travis-ci.org/twilio/twilio-php.png?branch=master)](http://travis-ci.org/twilio/twilio-php)
+# Google TTS
+
+[![Build Status](https://secure.travis-ci.org/hiddentao/google-tts.png?branch=master)](http://travis-ci.org/hiddentao/google-tts)
+
+A Javascript API for the Google's text-to-Speech engine and is based on code at http://weston.ruter.net/projects/google-tts/.
+
+
+**NOTE:** Playback (`.play()` below) will only work when running the script locally as Google's server only
+returns audio if you can prevent the browser from sending the Referrer HTTP Header to their server. So this library is
+at the moment only really good for use in browser plugins and Phonegap apps.
+
+## Features
+
+* Converts upto 42 languages
+* Supports playback through [HTML5 Audio tag](https://developer.mozilla.org/En/HTML/Element/Audio) if available in browser.
+* Asynchronous playback API
+* Splits up large inputs (>100 chars) into multiple consecutive requests (just like Google Translates does).
+* Small and compact: ~1.5 KB minified and gzipped
 
 ## Installation
 
-You can install **twilio-php** via PEAR or by downloading the source.
+Add the following inside your HTML `<body>` tag, near the bottom:
 
-#### Via PEAR (>= 1.9.3):
+    <script type="text/javascript" src="https://rawgithub.com/hiddentao/google-tts/master/google-tts.min.js"></script>
 
-PEAR is a package manager for PHP. Open a command line and use these PEAR
-commands to download the helper library:
+You can also install using [bower](https://github.com/bower/bower):
 
-    $ pear channel-discover twilio.github.com/pear
-    $ pear install twilio/Services_Twilio
+    $ bower install google-tts
 
-If you get the following message:
+## API
 
-    $ -bash: pear: command not found
+### new GoogleTTS(language)
 
-you can install PEAR from their website, or download the source directly.
+Initialize a new instance of the library, e.g:
 
-#### Via Composer:
+    var tts = new GoogleTTS('zh-CN');
 
-**twilio-php** is available on Packagist as the 
-[`twilio/sdk`](http://packagist.org/packages/twilio/sdk) package.
+**Params:**
 
-#### Via ZIP file:
+  * `language` - the default language to speak in when not otherwise specified. If omitted then English is assumed.
 
-[Click here to download the source
-(.zip)](https://github.com/twilio/twilio-php/zipball/master) which includes all
-dependencies.
 
-Once you download the library, move the twilio-php folder to your project
-directory and then include the library file:
+### .languages()
 
-    require '/path/to/twilio-php/Services/Twilio.php';
+Get the full list of supported languages.
 
-and you're good to go!
+**Returns:** An object such as:
 
-## A Brief Introduction
+    {
+        ...
+        'en' : 'English',
+        'zh-CN' : 'Mandarin (simplified)',
+        ...
+    }
 
-With the twilio-php library, we've simplified interaction with the
-Twilio REST API. No need to manually create URLS or parse XML/JSON.
-You now interact with resources directly. Follow the [Quickstart
-Guide](http://readthedocs.org/docs/twilio-php/en/latest/#quickstart)
-to get up and running right now. The [User
-Guide](http://readthedocs.org/docs/twilio-php/en/latest/#user-guide) shows you
-how to get the most out of **twilio-php**.
+### .url(text, language)
 
-## Quickstart
+Construct the URL to fetch the speech audio for given text and language.
 
-### Send an SMS
+**Params:**
 
-```php
-<?php
-// Install the library via PEAR or download the .zip file to your project folder.
-// This line loads the library
-require('/path/to/twilio-php/Services/Twilio.php');
+  * `text` - the text to convert to speech.
+  * `language` - the language to speak it in. If omitted then the default language (see above) is assumed.
 
-$sid = "ACXXXXXX"; // Your Account SID from www.twilio.com/user/account
-$token = "YYYYYY"; // Your Auth Token from www.twilio.com/user/account
+**Returns:** a URL to the audio file.
 
-$client = new Services_Twilio($sid, $token);
-$message = $client->account->sms_messages->create(
-  '9991231234', // From a valid Twilio number
-  '8881231234', // Text this number
-  "Hello monkey!"
-);
+### .play(text, language, cb)
 
-print $message->sid;
-```
+Fetch and play the speech audio for given text and language, if possible (see top).
 
-### Make a Call
+**Params:**
 
-```php
-<?php
-// Install the library via PEAR or download the .zip file to your project folder.
-// This line loads the library
-require('/path/to/twilio-php/Services/Twilio.php');
+  * `text` - the text to convert to speech.
+  * `language` - the language to speak it in. If omitted then the default language (see above) is assumed.
+  * `cb` - Completion callback function with signature `(err)`, where `err` holds information on any errors which may occur.
 
-$sid = "ACXXXXXX"; // Your Account SID from www.twilio.com/user/account
-$token = "YYYYYY"; // Your Auth Token from www.twilio.com/user/account
 
-$client = new Services_Twilio($sid, $token);
-$call = $client->account->calls->create(
-  '9991231234', // From a valid Twilio number
-  '8881231234', // Call this number
+### .getPlayer(cb)
 
-  // Read TwiML at this URL when a call connects (hold music)
-  'http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient'
-);
-```
+Get the active playback mechanism (see below).
 
-### Generating TwiML
+**Params:**
 
-To control phone calls, your application needs to output
-[TwiML](http://www.twilio.com/docs/api/twiml/ "Twilio Markup Language"). Use
-`Services_Twilio_Twiml` to easily create such responses.
+  * `cb` - Completion callback function with signature `(err, player)`, where `err` holds information on any errors which may occur. `player` is an instance of `GoogleTTS.Player`.
 
-```php
-<?php
-require('/path/to/twilio-php/Services/Twilio.php');
 
-$response = new Services_Twilio_Twiml();
-$response->say('Hello');
-$response->play('https://api.twilio.com/cowbell.mp3', array("loop" => 5));
-print $response;
-```
+### .addPlayer(player)
 
-That will output XML that looks like this:
+Add a playback mechanism (see below).
 
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<Response>
-    <Say>Hello</Say>
-    <Play loop="5">https://api.twilio.com/cowbell.mp3</Play>
-<Response>
-```
+**Params:**
 
-## [Full Documentation](http://readthedocs.org/docs/twilio-php/en/latest/ "Twilio PHP Library Documentation")
+  * `player` - An instance of `GoogleTTS.Player`.
 
-The documentation for **twilio-php** is hosted
-at Read the Docs. [Click here to read our full
-documentation.](http://readthedocs.org/docs/twilio-php/en/latest/ "Twilio PHP
-Library Documentation")
 
-## Prerequisites
+## Playback mechanisms
 
-* PHP >= 5.2.3
-* The PHP JSON extension
+At the mmoent there are two supported playback mechanisms:
 
-## Reporting Issues
+  * HTML5 audio tag
+    * As of June 10th 2013 only Safari and Chrome support MP3 playback
+  * [SoundManager2](http://www.schillmania.com/projects/soundmanager2/)
+    * On Firefox we need this to do MP3 playback, using Flash.
 
-We would love to hear your feedback. Report issues using the [Github
-Issue Tracker](https://github.com/twilio/twilio-php/issues) or email
-[help@twilio.com](mailto:help@twilio.com).
+When you first call `play()` the library calls `getPlayer()`, which then cycles through the available playback
+mechanisms until a supported one is found. If no playback mechanism is supported in the current browser then an error
+get thrown - *No playback mechanism is available*.
 
+Each playback mechanism is implemented as a sub-class of `GoogleTTS.Player`. You can implement your own playback
+mechanism by extending this class and then adding an instance of your custom mechanism via `addPlayer()`.
+
+
+## Demo
+
+For browsers which support HTML5 Audio MP3 playback you can launch `index.html` directly in the browser.
+
+For browsers which need to use SoundManager2 you will need to setup a `localhost` dev site which serves up index.html.
+
+## Build and Test
+
+If you make changes, before you raise a pull request build the project:
+
+    $ npm install
+    $ grunt
+
+## License
+
+(The MIT License)
+
+Copyright (c) Ramesh Nair &lt;www.hiddentao.com&gt;
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
