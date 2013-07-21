@@ -7,6 +7,11 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
     <link href="css/style.css" rel="stylesheet" media="screen">
+    <link href="style1.css" rel="stylesheet" media="screen">
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="textarea-helper.js"></script>
+    <script type="text/javascript" src="speech-recognizer.js"></script>
   </head>
   <body>
 
@@ -17,12 +22,15 @@
             <div class="row">
 
               <div class="span2">
-                <img src="img/cat.png">
+                <div class="speech-content-mic speech-mic"/></div>
               </div>
 
               <div class="span4">
                 <h1>What's up Steve?</h1>
               </div>
+
+              <textarea id="speech-page-content"></textarea>
+            
 
             </div>
           </div>
@@ -84,7 +92,6 @@
           <div class="span6 offset3">
             <div class="result">
 
-
               <div class="question"><p style="">Meow, I just saw a beautiful girl on the street, but I don't know what to say :(</p></div>
               <div class="answer">
                 <h1>Nice! Try talking about the following:</h1>
@@ -102,8 +109,5 @@
       </div>
     </div>
 
-
-
-    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>

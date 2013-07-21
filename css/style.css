@@ -42,3 +42,45 @@
 	font-weight:400;
 	line-height:25px;
 }
+
+#speech-page-content {
+    width: 100%;
+    height: 100%;
+}
+
+#speech-page-content:focus {
+    outline: none;
+}
+
+.speech-content-mic {
+}
+
+.speech-mic {
+    background: url("../img/cat.png") no-repeat;
+    width:100%;
+    height:180px;
+}
+
+.speech-mic-works {
+    background: url("../img/lazy.png") no-repeat;
+    width:220px;
+    height:180px;
+}
+
+#authority {
+    padding-top: 10px;
+}
+
+#speech-page-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+#speech-page-content::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+#speech-page-content::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
