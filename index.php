@@ -74,12 +74,8 @@
           <div class="span6 offset3">
             <div class="row">
 
-              <div class="span2">
+              <div class="span6">
                 <div class="speech-content-mic speech-mic"/></div>
-              </div>
-
-              <div class="span4">
-                <h1>What's up Steve?</h1>
               </div>
 
             
@@ -94,12 +90,12 @@
       <div class="row">
         <div class="container">
           <div class="span6 offset3">
-            <div class="inner"></div>
+            <div class="inner">Say Something</div>
               <div id="mom">
                 <div class="result">
 
 
-                  <div class="question"><p style="">Could you call my mom for me?</p></div>
+                  
                   <div class="answer">
                     <h1>Sure, I'm currently calling your mom for you</h1>
                     <div align="center">
@@ -118,7 +114,7 @@
             <div class="result">
 
 
-              <div class="question"><p style="">Meow, I'm trying to buy a coffee but I don't know what to say</p></div>
+              
               <div class="answer">
                 <h1>Here, try this:</h1>
                 <div class="box">
@@ -137,7 +133,7 @@
             <div class="result">
 
 
-              <div class="question"><p style="">I'm lost!!! *sob*</p></div>
+              
               <div class="answer">
                 <h1>Here, directions home from your location</h1>
                 <div class="box">
@@ -152,7 +148,7 @@
           <div class="span6 offset3" id="girl">
             <div class="result">
 
-              <div class="question"><p style="">Meow, I just saw a beautiful girl on the street, but I don't know what to say :(</p></div>
+              
               <div class="answer">
                 <h1>Nice! Try talking about the following:</h1>
                 <div class="box">
