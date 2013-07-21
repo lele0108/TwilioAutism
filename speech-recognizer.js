@@ -1,6 +1,7 @@
 (function($) {
 
     $(document).ready(function() {
+        $('#mom').toggle();
         $('.result').toggle();
         try {
             var recognition = new webkitSpeechRecognition();
@@ -37,9 +38,9 @@
                 if (event.results[i].isFinal) {
                     //insertAtCaret(textAreaID, event.results[i][0].transcript);
                     $('.inner').append(event.results[i][0].transcript);
-                    if (event.results[i][0].transcript === "hello") {
+                    if (event.results[i][0].transcript === "could you call my mom") {
                         console.log("hi");
-                        $('.result').toggle();
+                        $('#mom').toggle();
                     }
                     recognition.stop();
                 } else {
