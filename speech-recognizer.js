@@ -46,7 +46,6 @@
                     //CHECKS HERE
                     if (event.results[i][0].transcript === "could you call my mom") {
                         speak("Sure, I'm currently calling your mom for you");
-                        console.log("hi");
                         $('#mom').addClass('animated fadeInDown');
                         $('#mom').toggle().fadeIn("slow");
                         Twilio.Device.connect();
@@ -59,7 +58,7 @@
                     }
 
                     else if (event.results[i][0].transcript === "I'm lost") {
-                        console.log("hi");
+                        speak("Here are directions home from your location. Do you want me to ask your mom for help?");
                         $('#lost').addClass('animated fadeInDown');
                         $('#lost').toggle();
                     }
