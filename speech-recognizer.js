@@ -110,15 +110,19 @@
                     }
 
                     else if (event.results[i][0].transcript === "hello") {
-                        speak("Hello, how are you? I feel meowtastic.", { speed: 125 });
                         $('#hi').addClass('animated fadeInDown');
                         $('#hi').toggle();
+                        var query = "Hello, how are you? I feel meowtastic!";
+                        var url = "http://tts-api.com/tts.mp3?q="+query;
+                        playSound(url);
                     }
 
                     else if (event.results[i][0].transcript === "yes") {
-                        speak("Sure, I'm currently calling your mom for you");
                         $('#mom').addClass('animated fadeInDown');
                         $('#mom').toggle().fadeIn("slow");
+                        var query = "Sure Im currently calling your mom for you";
+                        var url = "http://tts-api.com/tts.mp3?q="+query;
+                        playSound(url);
                         Twilio.Device.connect();
                     }
 
