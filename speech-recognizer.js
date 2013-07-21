@@ -9,6 +9,7 @@
         $('#lonely').toggle();
         $('#bored').toggle();
         $('#mom').toggle();
+        $('#hi').toggle();
         try {
             var recognition = new webkitSpeechRecognition();
         } catch(e) {
@@ -47,11 +48,17 @@
                     console.log(event.results[i][0].transcript);
 
                     //CHECKS HERE
-                    if (event.results[i][0].transcript === "could you call my mom") {
+                    if (event.results[i][0].transcript === "could you call my mom" || event.results[i][0].transcript  === "can you call my mom") {
                         speak("Sure, I'm currently calling your mom for you");
                         $('#mom').addClass('animated fadeInDown');
                         $('#mom').toggle().fadeIn("slow");
                         Twilio.Device.connect();
+                    }
+
+                    else if (event.results[i][0].transcript === "hello") {
+                        speak("Hello, how are you? I feel meowtastic.", { speed: 125 });
+                        $('#hi').addClass('animated fadeInDown');
+                        $('#hi').toggle();
                     }
 
                     else if (event.results[i][0].transcript === "I want to buy some coffee") {

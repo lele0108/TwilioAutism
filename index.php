@@ -234,6 +234,17 @@
             </div>
           </div>
 
+          <div class="span6 offset3" id="hi">
+            <div class="result">
+
+              
+              <div class="answer">
+                <h1>Hello, how are you? I feel meowtastic!</h1>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
