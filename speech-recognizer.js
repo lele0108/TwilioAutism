@@ -32,6 +32,7 @@
         };
 
         recognition.onresult = function (event) {
+            $('.inner').replaceWith('<div class="inner"></div>');
             //var pos = textArea.getCursorPosition() - interimResult.length;
             //textArea.val(textArea.val().replace(interimResult, ''));
             interimResult = '';
@@ -51,7 +52,7 @@
                     }
 
                     else if (event.results[i][0].transcript === "I want to buy some coffee") {
-                        console.log("hi");
+                        speak("Here, try this: 1. Go up to cashier 2. Tell her what you want 3. Pay her what she tells you to 4. Get your delicious coffee! Do you want me to say it for you?", { speed: 125 });
                         $('#coffee').toggle();
                     }
 
@@ -76,7 +77,6 @@
 
         recognition.onend = function() {
             $('.speech-content-mic').removeClass('speech-mic-works').addClass('speech-mic');
-            $('.inner').replaceWith('<div class="inner"></div>');
         };
     });
 })(jQuery);
