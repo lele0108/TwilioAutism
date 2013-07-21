@@ -1,7 +1,6 @@
 (function($) {
 
     $(document).ready(function() {
-        $('#mom').toggle();
         $('#coffee').toggle();
         $('#lost').toggle();
         $('#girl').toggle();
@@ -9,6 +8,7 @@
         $('#hurt').toggle();
         $('#lonely').toggle();
         $('#bored').toggle();
+        $('#mom').toggle();
         try {
             var recognition = new webkitSpeechRecognition();
         } catch(e) {
@@ -27,7 +27,6 @@
 
         $('.speech-mic-works').click(function(){
             recognition.stop();
-            console.log("penis");
         });
 
         var startRecognition = function() {
@@ -89,6 +88,13 @@
                         speak("Here, lets draw a picture and send it to your mom");
                         $('#bored').addClass('animated fadeInDown');
                         $('#bored').toggle();
+                    }
+
+                    else if (event.results[i][0].transcript === "yes") {
+                        speak("Sure, I'm currently calling your mom for you");
+                        $('#mom').addClass('animated fadeInDown');
+                        $('#mom').toggle().fadeIn("slow");
+                        Twilio.Device.connect();
                     }
 
                     else {
