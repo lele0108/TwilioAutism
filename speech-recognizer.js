@@ -47,22 +47,26 @@
                     if (event.results[i][0].transcript === "could you call my mom") {
                         speak("Sure, I'm currently calling your mom for you");
                         console.log("hi");
-                        $('#mom').toggle();
+                        $('#mom').addClass('animated fadeInDown');
+                        $('#mom').toggle().fadeIn("slow");
                         Twilio.Device.connect();
                     }
 
                     else if (event.results[i][0].transcript === "I want to buy some coffee") {
                         speak("Here, try this: 1. Go up to cashier 2. Tell her what you want 3. Pay her what she tells you to 4. Get your delicious coffee! Do you want me to say it for you?", { speed: 125 });
+                        $('#coffee').addClass('animated fadeInDown');
                         $('#coffee').toggle();
                     }
 
                     else if (event.results[i][0].transcript === "I'm lost") {
                         console.log("hi");
+                        $('#lost').addClass('animated fadeInDown');
                         $('#lost').toggle();
                     }
 
                     else if (event.results[i][0].transcript === "i see a beautiful girl") {
                         console.log("hi");
+                        $('#girl').addClass('animated fadeInDown');
                         $('#girl').toggle();
                     }
 
