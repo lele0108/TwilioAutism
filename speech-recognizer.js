@@ -1,7 +1,7 @@
 (function($) {
 
     $(document).ready(function() {
-
+        $('.result').toggle();
         try {
             var recognition = new webkitSpeechRecognition();
         } catch(e) {
@@ -37,6 +37,10 @@
                 if (event.results[i].isFinal) {
                     //insertAtCaret(textAreaID, event.results[i][0].transcript);
                     $('.inner').append(event.results[i][0].transcript);
+                    if (event.results[i][0].transcript === "hello") {
+                        console.log("hi");
+                        $('.result').toggle();
+                    }
                 } else {
                     isFinished = false;
                     //insertAtCaret(textAreaID, event.results[i][0].transcript + '\u200B');
