@@ -1,3 +1,5 @@
+(function($) {
+
 $(document).ready(function(){
 
 			Twilio.Device.setup("<?php echo $capability->generateToken();?>");
@@ -37,3 +39,5 @@ $(document).ready(function(){
 			}
 
 		});
+
+})(jQuery);

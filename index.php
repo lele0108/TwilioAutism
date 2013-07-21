@@ -1,13 +1,13 @@
 <?php
-// @start snippet
-include 'Services/Twilio/Capability.php';
+  // @start snippet
+  include 'Services/Twilio/Capability.php';
 
-$accountSid = 'AC387108592c0562176801dfecc07b3551';
-$authToken  = 'c1f80aab9cc6f128c379fedff230b700';
+  $accountSid = 'AC387108592c0562176801dfecc07b3551';
+  $authToken  = 'c1f80aab9cc6f128c379fedff230b700';
 
-$capability = new Services_Twilio_Capability($accountSid, $authToken);
-$capability->allowClientOutgoing('AP7a72e3a80514ac5aea5309ea32b4889f');
-// @end snippet
+  $capability = new Services_Twilio_Capability($accountSid, $authToken);
+  $capability->allowClientOutgoing('AP7a72e3a80514ac5aea5309ea32b4889f');
+  // @end snippet
 ?>
 <!DOCTYPE html>
 <html>
@@ -67,14 +67,6 @@ $capability->allowClientOutgoing('AP7a72e3a80514ac5aea5309ea32b4889f');
     <script type="text/javascript" src="speech-recognizer.js"></script>
   </head>
   <body>
-
-<div align="center">
-      <input type="button" id="hangup" value="Disconnect Call" style="display:none;"/>
-      <div id="status">
-        Offline
-      </div>
-
-
     
     <div class="steve">
       <div class="row">
@@ -110,6 +102,12 @@ $capability->allowClientOutgoing('AP7a72e3a80514ac5aea5309ea32b4889f');
                   <div class="question"><p style="">Could you call my mom for me?</p></div>
                   <div class="answer">
                     <h1>Sure, I'm currently calling your mom for you</h1>
+                    <div align="center">
+                      <input type="button" id="hangup" value="Disconnect Call" style="display:none;"/>
+                      <div id="status">
+                      Offline
+                      </div>
+                    </div>
                   </div>
 
                 </div>
