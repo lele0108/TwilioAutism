@@ -14,6 +14,11 @@ Built at the Twilio + Autism Speaks hackathon. Snuffy is Siri/Google Now for peo
 
 We've hosted a demo here: http://jliu.me/autism
 
+## Screenshots
+
+<img src="http://i.imgur.com/DRZDwAU.png">
+<img src="http://i.imgur.com/78N698e.png">
+
 ## Usage
 
 Install index.php to your web browser, and open up in Google Chrome for best results. Click on Snuffy to speak. 
