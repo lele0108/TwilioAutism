@@ -1,5 +1,7 @@
 # Snuffy
 
+<img src="http://i.imgur.com/3jQ5lTL.png">
+
 A voice-assistant app built exclusively for people suffering with autism. 
 
 Built at the Twilio + Autism Speaks hackathon. Snuffy is Siri/Google Now for people suffering with autism. 
