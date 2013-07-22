@@ -9,6 +9,11 @@ Built at the Twilio + Autism Speaks hackathon. Snuffy is Siri/Google Now for peo
 * Say Simple Commands to Snuffy
 * Easy to use interface
 * Completely open source, free to use, and all that awesomesauce
+* 
+
+## Demo
+
+We've hosted a demo here: http://jliu.me/autism
 
 ## Usage
 
