@@ -121,7 +121,7 @@
               <div class="answer">
                 <h1>Here, try this:</h1>
                 <div class="box">
-                  <h2>1. Go up to cashier</h2>
+                  <h2>1. Go to your local coffee shop and walk up to cashier</h2>
                   <h2>2. Tell her what you want</h2>
                   <h2>3. Pay her what she tells you to</h2>
                   <h2>4. Get your delicious coffee!</h2>

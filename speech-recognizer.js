@@ -47,6 +47,7 @@
             $('#hurt').hide();
             $('#lonely').hide();
             $('#bored').hide();
+            $('#hi').hide();
             //var pos = textArea.getCursorPosition() - interimResult.length;
             //textArea.val(textArea.val().replace(interimResult, ''));
             interimResult = '';
@@ -74,7 +75,7 @@
                         //speak("Here, try this: 1. Go up to cashier 2. Tell her what you want 3. Pay her what she tells you to 4. Get your delicious coffee! Do you want me to say it for you?", { speed: 125 });
                         $('#coffee').addClass('animated fadeInDown');
                         $('#coffee').toggle();
-                        var query = "Here, try this: 1. Go up to cashier 2. Tell her what you want 3. Pay her what she tells you to 4. Get your delicious coffee! Do you want me to say it for you?";
+                        var query = "Here, try this: 1. Go to your local coffee shop and walk up to cashier 2. Tell her what you want 3. Pay her what she tells you to 4. Get your delicious coffee! Do you want me to say it for you?";
                         var url = "http://tts-api.com/tts.mp3?q="+query;
                         playSound(url);
                         
